@@ -6,7 +6,7 @@ namespace List
     {
         static void Main(string[] args)
         {
-            List list = new List();
+            var list = new List();
             list.Insert(12);
             list.Insert(313);
             list.Insert(-21);
