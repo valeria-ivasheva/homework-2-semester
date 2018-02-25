@@ -7,16 +7,18 @@ namespace List
         static void Main(string[] args)
         {
             var list = new List();
-            list.Insert(12);
-            list.Insert(313);
-            list.Insert(-21);
-            list.Insert(0);
+            list.Insert("ljj");
+            list.Insert("pop");
+            list.Insert("op");
+            list.InsertIndex("hk", 1);
             list.PrintList();
-            list.DeleteElement(-1);
-            list.DeleteElement(12);
-            list.DeleteElement(0);
-            list.Insert(732);
-            list.DeleteElement(-21);
+            list.DeleteElement("ljj");
+            list.DeleteElement("l");
+            list.DeleteElement("op");
+            list.Insert("uy");
+            list.DeleteElement("hk");
+            list.PrintList();
+            list.DeleteElementIndex(2);
             list.PrintList();
         }
     }
