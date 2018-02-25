@@ -4,22 +4,20 @@ namespace HashTable
 {
     class HashTable
     {
-        List[] buckets = new List[100];
+        private List[] buckets = new List[100];
 
-        private int HashFunction(string value)
+        private int abs(int value)
         {
-            int result = 0;
-            int p = 2;
-            for (int i = 0; i < value.Length; i++)
+            if (value < 0)
             {
-                result = result * p + value[i];
+                value *= -1;
             }
-            return result / 100;
+            return value;
         }
 
         public void InsertElement(string value)
         {
-            int number = HashFunction(value);
+            int number = abs(value.GetHashCode() % 100);
             if (buckets[number] == null)
             {
                 var temp = new List(value);
@@ -31,7 +29,7 @@ namespace HashTable
 
         public void DeleteElement(string value)
         {
-            int number = HashFunction(value);
+            int number = abs(value.GetHashCode() % 100);
             if (buckets[number] == null)
             {
                 return;
@@ -39,14 +37,14 @@ namespace HashTable
             buckets[number].DeleteElement(value);
         }
 
-        public bool IsHaveElement(string value)
+        public bool HasElement(string value)
         {
-            int number = HashFunction(value);
+            int number = abs(value.GetHashCode() % 100);
             if (buckets[number] == null)
             {
                 return false;
             }
-            return buckets[number].IsHaveElement(value);
+            return buckets[number].HasElement(value);
         }
     }
 }
