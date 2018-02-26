@@ -21,6 +21,11 @@ namespace Calculator
 
         public void Push(double value)
         {
+            if (i + 1 > 100)
+            {
+                Console.WriteLine("Oops, input error");
+                return;
+            }
             i++;
             stack[i] = value;
         }
