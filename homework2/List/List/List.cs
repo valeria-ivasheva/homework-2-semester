@@ -119,7 +119,6 @@ namespace List
             newElement.next = temp.next;
             temp.next = newElement;
             FixIndex(newElement.next, index + 1);
-
         }
 
         private void FixIndex(ListElement element, int index)
@@ -134,6 +133,10 @@ namespace List
         public void DeleteElementIndex(int index)
         {
             var temp = head;
+            if (temp == null)
+            {
+                return;
+            }
             size--;
             if (index == 1)
             {
@@ -160,6 +163,10 @@ namespace List
         public void DeleteElement(string value)
         {
             var temp = head;
+            if (temp == null)
+            {
+                return;
+            }
             if (temp.value == value)
             {
                 head = head.next;
