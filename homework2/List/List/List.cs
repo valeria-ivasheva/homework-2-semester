@@ -7,7 +7,6 @@ namespace List
         private class ListElement
         {
             public string value;
-            public int index;
             public ListElement next;
 
             public ListElement(string value)
@@ -27,7 +26,6 @@ namespace List
         public List(string value)
         {
             var element = new ListElement(value);
-            element.index = 1;
             head = element;
             tail = head;
             size++;
@@ -41,12 +39,10 @@ namespace List
             if (IsEmpty())
             {
                 head = newElement;
-                newElement.index = 1;
                 tail = head;
                 size++;
                 return;
             }
-            newElement.index = tail.index + 1;
             tail.next = newElement;
             tail = newElement;
             size++;
@@ -91,7 +87,6 @@ namespace List
             }
             var temp = head;
             var newElement = new ListElement(value);
-            newElement.index = index;
             size++;
             if (index == 1)
             {
@@ -103,7 +98,6 @@ namespace List
                 }
                 newElement.next = head;
                 head = newElement;
-                FixIndex(head.next, index + 1);
                 return;
             }
             for (int i = 1; i < index - 1; i++)
@@ -118,18 +112,8 @@ namespace List
             }
             newElement.next = temp.next;
             temp.next = newElement;
-            FixIndex(newElement.next, index + 1);
         }
-
-        private void FixIndex(ListElement element, int index)
-        {
-            for (int i = index; i <= size; i++)
-            {
-                element.index = i;
-                element = element.next;
-            }
-        }
-
+        
         public void DeleteElementIndex(int index)
         {
             var temp = head;
@@ -141,7 +125,6 @@ namespace List
             if (index == 1)
             {
                 head = temp.next;
-                FixIndex(head, temp.index);
                 if (temp == tail)
                 {
                     tail = head;
@@ -157,7 +140,6 @@ namespace List
                 tail = temp;
             }
             temp.next = temp.next.next;
-            FixIndex(temp.next, index);
         }
 
         public void DeleteElement(string value)
@@ -177,7 +159,6 @@ namespace List
                     size--;
                     return;
                 }
-                FixIndex(head, temp.index);
                 return;
             }
             if (!HasElement(value))
@@ -194,7 +175,6 @@ namespace List
                 tail = temp;
             }
             size--;
-            FixIndex(temp.next.next, temp.next.index);
             temp.next = temp.next.next;
         }
     }

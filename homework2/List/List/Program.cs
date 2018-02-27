@@ -14,7 +14,7 @@ namespace List
             list.PrintList();
             list.DeleteElement("ljj");
             list.DeleteElement("l");
-            list.DeleteElement("op");
+            list.DeleteElementIndex(1);
             list.Insert("uy");
             list.DeleteElement("hk");
             list.PrintList();
