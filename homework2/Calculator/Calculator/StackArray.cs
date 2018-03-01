@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-    class StackArray : IStack
+    public class StackArray : IStack
     {
         private double[] stack = new double[100];
         int i = -1;
@@ -21,7 +21,7 @@ namespace Calculator
 
         public void Push(double value)
         {
-            if (i + 1 > 100)
+            if (i > 98)
             {
                 Console.WriteLine("Oops, input error");
                 return;

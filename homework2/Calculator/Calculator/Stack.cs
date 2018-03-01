@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-    class Stack : IStack
+    public class Stack : IStack
     {
         private class StackElement
         {
