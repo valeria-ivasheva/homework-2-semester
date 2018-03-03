@@ -2,10 +2,10 @@
 
 namespace Calculator
 {
-    class StackCalculator
+    public class StackCalculator
     {
         private IStack stack;
-        string str;
+        public string str;
 
         public StackCalculator(string str, IStack choosenStack)
         {
@@ -13,7 +13,7 @@ namespace Calculator
             stack = choosenStack;
         }
 
-        public  void Calculate()
+        public  double Calculate()
         {
             string[] elements = str.Split(' ');
             for (int i = 0; i < elements.Length; i++)
@@ -34,7 +34,7 @@ namespace Calculator
                     else
                     {
                         Console.WriteLine("Error input");
-                        return;
+                        return -1;
                     }
                     if (!stack.IsEmpty())
                     {
@@ -43,17 +43,19 @@ namespace Calculator
                     else
                     {
                         Console.WriteLine("Error input");
-                        return;
+                        return - 1;
                     }
                     if (elements[i] == "/" && Math.Abs(b) < 0.00001)
                     {
                         Console.WriteLine("Division by zero");
-                        return;
+                        return -1;
                     }
                     stack.Push(ApplyArithmeticOperator(elements[i], a, b));
                 }
             }
-            Console.WriteLine($" = {stack.Pop()}");
+            double result = stack.Pop();
+            Console.WriteLine($" = {result}");
+            return result;
         }
 
         private static double ApplyArithmeticOperator(string symbol, double a, double b)
