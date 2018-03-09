@@ -6,43 +6,38 @@ namespace Calculator.Tests
     public class StackCalculatorTest
     {
         private StackCalculator calculator;
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            calculator = new StackCalculator("", new Stack());
-        }
+        const double delta = 0.0001;
 
         [TestMethod]
         public void Sum_2Plus5_7Returned()
         {
-            calculator.str = "2 5 +";
+            calculator = new StackCalculator("2 5 +", new Stack());
             double result = calculator.Calculate();
-            Assert.AreEqual(7, result);
+            Assert.AreEqual(7, result, delta);
         }
 
         [TestMethod]
         public void ExpressionWithTwoOperations()
         {
-            calculator.str = "2 5 + 7 *";
+            calculator = new StackCalculator("2 5 + 7 *", new Stack());
             double result = calculator.Calculate();
-            Assert.AreEqual(49, result);
+            Assert.AreEqual(49, result, delta);
         }
 
         [TestMethod]
         public void DivisionByZero()
         {
-            calculator.str = "2 0 /";
+            calculator = new StackCalculator("2 / 0", new Stack());
             double result = calculator.Calculate();
-            Assert.AreEqual(-1, result);
+            Assert.AreEqual(-1, result, delta);
         }
 
         [TestMethod]
         public void ErrorInput()
         {
-            calculator.str = "2 + 7 * 1";
+            calculator = new StackCalculator("2 + 7 * 1", new Stack());
             double result = calculator.Calculate();
-            Assert.AreEqual(-1, result);
+            Assert.AreEqual(-1, result, delta);
         }
     }
 }

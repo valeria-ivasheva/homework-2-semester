@@ -5,7 +5,7 @@ namespace Calculator
     public class StackCalculator
     {
         private IStack stack;
-        public string str;
+        private string str;
 
         public StackCalculator(string str, IStack choosenStack)
         {
@@ -13,7 +13,7 @@ namespace Calculator
             stack = choosenStack;
         }
 
-        public  double Calculate()
+        public double Calculate()
         {
             string[] elements = str.Split(' ');
             for (int i = 0; i < elements.Length; i++)
@@ -43,7 +43,7 @@ namespace Calculator
                     else
                     {
                         Console.WriteLine("Error input");
-                        return - 1;
+                        return -1;
                     }
                     if (elements[i] == "/" && Math.Abs(b) < 0.00001)
                     {
@@ -54,7 +54,6 @@ namespace Calculator
                 }
             }
             double result = stack.Pop();
-            Console.WriteLine($" = {result}");
             return result;
         }
 

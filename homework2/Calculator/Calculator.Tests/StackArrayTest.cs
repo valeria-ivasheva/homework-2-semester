@@ -7,6 +7,7 @@ namespace Calculator.Tests
     public class StackArrayTest
     {
         private StackArray stack;
+        const double delta = 0.0001;
 
         [TestInitialize]
         public void Initialize()
@@ -21,12 +22,11 @@ namespace Calculator.Tests
             Assert.IsFalse(stack.IsEmpty());
         }
 
-
         [TestMethod]
         public void PopArrayStackTest()
         {
             stack.Push(1);
-            Assert.AreEqual(1, stack.Pop());
+            Assert.AreEqual(1, stack.Pop(), delta);
         }
 
         [TestMethod]
@@ -34,8 +34,8 @@ namespace Calculator.Tests
         {
             stack.Push(1);
             stack.Push(2);
-            Assert.AreEqual(2, stack.Pop());
-            Assert.AreEqual(1, stack.Pop());
+            Assert.AreEqual(2, stack.Pop(), delta);
+            Assert.AreEqual(1, stack.Pop(), delta);
         }
 
         [TestMethod]
