@@ -15,5 +15,5 @@ namespace HashTable3
             hash.DeleteElement("tr");
         }
     }
-} 
+}
 

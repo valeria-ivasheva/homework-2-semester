@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HashTable3 
+namespace HashTable3
 {
     /// <summary>
     /// Класс хэш-функции
@@ -19,7 +19,7 @@ namespace HashTable3
             {
                 number += value[i];
             }
-            return number % 100;
+            return Math.Abs(number);
         }
     }
 }

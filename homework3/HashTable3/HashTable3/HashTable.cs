@@ -7,6 +7,7 @@ namespace HashTable3
     /// </summary>
     public class HashTable
     {
+        const int HashTableSize = 100;
         private List[] buckets;
 
         private IHashFunction hashFunction;
@@ -18,9 +19,9 @@ namespace HashTable3
         public HashTable(IHashFunction hashFunction)
         {
             this.hashFunction = hashFunction;
-            buckets = new List[100];
+            buckets = new List[HashTableSize];
 
-            for (var i = 0; i < 100; ++i)
+            for (var i = 0; i < HashTableSize; ++i)
             {
                 buckets[i] = new List();
             }
@@ -30,7 +31,7 @@ namespace HashTable3
         {
             public int GetHash(string value)
             {
-                return Math.Abs(value.GetHashCode() % 100);
+                return Math.Abs(value.GetHashCode());
             }
         }
 
@@ -38,16 +39,23 @@ namespace HashTable3
         /// Создает хэш-таблицу со стандартной хэш-функцией 
         /// </summary>
         public HashTable()
-        : this(new StandartHashFunction())
-        { }
+        {
+            this.hashFunction = new StandartHashFunction();
+            buckets = new List[HashTableSize];
+
+            for (var i = 0; i < HashTableSize; ++i)
+            {
+                buckets[i] = new List();
+            }
+        }
 
         /// <summary>
-        ///Вставляет элемент в хэш-таблицу
+        /// Вставляет элемент в хэш-таблицу
         /// </summary>
         /// <param name="value">Элемент для добавления в таблицу</param>
         public void InsertElement(string value)
         {
-            int number = hashFunction.GetHash(value);
+            int number = hashFunction.GetHash(value) % HashTableSize;
             if (buckets[number] == null)
             {
                 var temp = new List(value);
@@ -63,14 +71,14 @@ namespace HashTable3
         /// <param name="value">Удаляемый элемент</param>
         public void DeleteElement(string value)
         {
-            int number = hashFunction.GetHash(value);
+            int number = hashFunction.GetHash(value) % HashTableSize;
             if (buckets[number] == null)
             {
                 return;
             }
             buckets[number].DeleteElement(value);
         }
-        
+
         /// <summary>
         /// Проверка на существование элемента в хэш-таблице
         /// </summary>
@@ -78,7 +86,7 @@ namespace HashTable3
         /// <returns>Возвращает true, если есть в этот таблице </returns>
         public bool HasElement(string value)
         {
-            int number = hashFunction.GetHash(value);
+            int number = hashFunction.GetHash(value) % HashTableSize;
             if (buckets[number] == null)
             {
                 return false;
