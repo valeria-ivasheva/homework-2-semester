@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace hm52
 {
+    /// <summary>
+    /// Игра, в которой штучка ходит по лабиринту
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

@@ -2,6 +2,9 @@
 
 namespace hm52
 {
+    /// <summary>
+    /// Класса, генерирующий события по нажатию на клавиши управления курсором
+    /// </summary>
     public class EventLoop
     {
         public event EventHandler<EventArgs> LeftHandler = (sender, args) => { };

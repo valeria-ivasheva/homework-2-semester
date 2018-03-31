@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace hm52
 {
+    /// <summary>
+    /// Класс, реализующий игру
+    /// </summary>
     public class Game
     {
         protected static int origRow;
@@ -17,6 +17,12 @@ namespace hm52
             field = inputField;
         }
 
+        /// <summary>
+        /// Проверяет свободна ли клетка для записи и записывает при истинном значении
+        /// </summary>
+        /// <param name="x"> Координата клетки по х</param>
+        /// <param name="y"> Координата клетки по у</param>
+        /// <returns> Возвращает true, если клетка свободна</returns>
         private bool WriteAt(int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -30,6 +36,9 @@ namespace hm52
             return true;
         }
 
+        /// <summary>
+        /// Переводит элемент на одну позицию влево, если это возможно
+        /// </summary>
         public void OnLeft(object sender, EventArgs args)
         {
             origCol = Console.CursorLeft;
@@ -43,6 +52,9 @@ namespace hm52
             Console.SetCursorPosition(--origCol, origRow);
         }
 
+        /// <summary>
+        /// Переводит элемент на одну позицию вправо, если это возможно
+        /// </summary>
         public void OnRight(object sender, EventArgs args)
         {
             origCol = Console.CursorLeft;
@@ -56,6 +68,9 @@ namespace hm52
             Console.Write(' ');
         }
 
+        /// <summary>
+        /// Переводит элемент на одну позицию вниз, если это возможно
+        /// </summary>
         public void OnDown(object sender, EventArgs args)
         {
             origCol = Console.CursorLeft;
@@ -70,6 +85,9 @@ namespace hm52
             Console.SetCursorPosition(origCol, origRow + 1);
         }
 
+        /// <summary>
+        /// Переводит элемент на одну позицию вверх, если это возможно
+        /// </summary>
         public void OnUp(object sender, EventArgs args)
         {
             origCol = Console.CursorLeft;
