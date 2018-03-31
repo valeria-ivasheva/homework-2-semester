@@ -25,6 +25,10 @@ namespace Calculator_61_
 
         }
 
+        /// <summary>
+        /// Записывает введенный символ
+        /// </summary>
+        /// <param name="inputStr"> Введенный символ</param>
         private void Input(string inputStr)
         {
             if (textBox1.Text == "Input Error" || textBox1.Text == "Divide by zero :(")
@@ -34,6 +38,11 @@ namespace Calculator_61_
             textBox1.Text = textBox1.Text + inputStr;
         }
 
+        /// <summary>
+        /// Записывает оператор и считает промежуточное значение, если нужно
+        /// </summary>
+        /// <param name="strOperator"> Оператор для записи</param>
+        /// <exception> Исключение, когда неправильный ввод или деление на ноль</exception>
         private void Operation(string strOperator )
         {
             try
@@ -159,6 +168,9 @@ namespace Calculator_61_
             Reset();
         }
 
+        /// <summary>
+        /// Сбрасывает все значения
+        /// </summary>
         private void Reset()
         {
             textBox1.Text = "";

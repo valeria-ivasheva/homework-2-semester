@@ -2,8 +2,19 @@
 
 namespace Calculator_61_
 {
+    /// <summary>
+    /// Класс, отвечающий за логику программы
+    /// </summary>
     public class CalculatorFunction
     {
+        /// <summary>
+        /// Функция, считающая значение арифметической операции
+        /// </summary>
+        /// <param name="inputValue"> Левый операнд</param>
+        /// <param name="nextValue"> Правый операнд</param>
+        /// <param name="operation"> Операция, которую нужно выполнить</param>
+        /// <exception> Исключение, когда неправильный ввод или деление на ноль</exception>
+        /// <returns> Значение выполненной операции</returns>
         public string Calculate(string inputValue, string nextValue, string operation)
         {
             if (inputValue == "")
