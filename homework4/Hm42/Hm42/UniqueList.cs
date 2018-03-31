@@ -5,7 +5,7 @@ namespace Hm42
     public class UniqueList : List
     {
         /// <summary>
-        /// Добавляет элемент в список, если он уникальный
+        /// Добавляет элемент в список, если он уникальный.
         /// </summary>
         /// <exception cref="RepeatingElementException"> Если элемент повторяется</exception>
         /// <param name="value"> Добавляемый элемент</param>
