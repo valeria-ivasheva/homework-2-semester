@@ -4,6 +4,11 @@ namespace Hm42
 {
     public class UniqueList : List
     {
+        /// <summary>
+        /// Добавляет элемент в список, если он уникальный
+        /// </summary>
+        /// <exception cref="RepeatingElementException"> Если элемент повторяется</exception>
+        /// <param name="value"> Добавляемый элемент</param>
         public override void Insert(string value)
         {
             if (HasElement(value))
@@ -13,6 +18,12 @@ namespace Hm42
             base.Insert(value);
         }
 
+        /// <summary>
+        /// Добавляет элемент в список под определенным индексом, если он уникальный
+        /// </summary>
+        /// <param name="value"> Добавляемый элемент</param>
+        /// <exception cref="RepeatingElementException"> Если элемент повторяется</exception>
+        /// <param name="index"> Индекс, куда нужно добавить</param>
         public override void InsertIndex(string value, int index)
         {
             if (HasElement(value))
@@ -22,6 +33,11 @@ namespace Hm42
             base.InsertIndex(value, index);
         }
 
+        /// <summary>
+        /// Удалить элемент из списка
+        /// </summary>
+        /// <exception cref="NonexistentException"> Если такого элемента нет в списке</exception>
+        /// <param name="value"> Удаляемый элемент</param>
         public override void DeleteElement(string value)
         {
             if (!HasElement(value))
