@@ -42,6 +42,7 @@ namespace Hm41
         /// Создает для арифметической строки дерево разбора
         /// </summary>
         /// <param name="str"> Арифметическое выражение(строка)</param>
+        /// <exception cref="InputErrorException"> Неправильный ввод</exception>
         /// <returns> Дерево разбора</returns>
         private Node DoTree(ref string str)
         {

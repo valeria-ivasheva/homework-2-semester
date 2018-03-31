@@ -7,6 +7,9 @@ namespace Hm42
     /// </summary>
     public class List
     {
+        /// <summary>
+        /// Класс элемент списка
+        /// </summary>
         protected class ListElement
         {
             public string value;
