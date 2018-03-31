@@ -2,8 +2,14 @@
 
 namespace Hm41
 {
+    /// <summary>
+    /// Класс дерево разбора 
+    /// </summary>
     public class ParsTree
     {
+        /// <summary>
+        /// Элемент дерева разбора
+        /// </summary>
         private class Node
         {
             public ElementOfTree value;
@@ -13,16 +19,30 @@ namespace Hm41
         
         private Node root;
 
+        /// <summary>
+        /// Дерво разбора
+        /// </summary>
+        /// <param name="str"> Выражение, для которого пишется дерево разбора</param>
         public ParsTree(string str)
         {
             root = DoTree(ref str);
         }
 
+        /// <summary>
+        /// Проверка, является ли символ оператором
+        /// </summary>
+        /// <param name="symbol"> Проверяемый символ</param>
+        /// <returns> True, если это оператор</returns>
         private bool IsOperation(char symbol)
         {
             return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/');
         }
 
+        /// <summary>
+        /// Создает для арифметической строки дерево разбора
+        /// </summary>
+        /// <param name="str"> Арифметическое выражение(строка)</param>
+        /// <returns> Дерево разбора</returns>
         private Node DoTree(ref string str)
         {
             Node node = new Node();
@@ -80,11 +100,18 @@ namespace Hm41
             return node;
         }
 
+        /// <summary>
+        /// Печатает дерево
+        /// </summary>
         public void Print()
         {
             PrintNode(ref root);
         }
 
+        /// <summary>
+        /// Печатает элемент дерева
+        /// </summary>
+        /// <param name="node"> Элемент дерева для печати</param>
         private void PrintNode(ref Node node)
         {
             if (node == null)
@@ -104,6 +131,10 @@ namespace Hm41
             }
         }
 
+        /// <summary>
+        /// Возвращает результат для данного дерева
+        /// </summary>
+        /// <returns> Результат арифметического выражения для данного дерева</returns>
         public int ResultArithmetic()
         {
             return root.value.Calculate();
