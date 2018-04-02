@@ -2,6 +2,9 @@
 
 namespace Hm42
 {
+    /// <summary>
+    /// Список, который не содержит повторяющихся значений
+    /// </summary>
     public class UniqueList : List
     {
         /// <summary>

@@ -7,7 +7,7 @@ namespace Hm42
     /// </summary>
     public class List
     {
-        protected class ListElement
+        private class ListElement
         {
             public string value;
             public ListElement next;
@@ -18,9 +18,9 @@ namespace Hm42
             }
         }
 
-        protected ListElement head;
-        protected ListElement tail;
-        protected int size;
+        private ListElement head;
+        private ListElement tail;
+        private int size;
 
         public List()
         {
@@ -72,7 +72,7 @@ namespace Hm42
         {
             if (index > size || index < 0)
             {
-                return "Error";
+                throw new NonexistentException();
             }
             var temp = head;
             for (int i = 1; i < index; i++)
