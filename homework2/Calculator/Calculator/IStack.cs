@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-    interface IStack
+    public interface IStack
     {
         //Забрать элемент
         double Pop();

@@ -6,6 +6,7 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Input expression");
             string str = Console.ReadLine();
             Console.WriteLine("Choose arrayStack (0) or stack (1)");
             int i = int.Parse(Console.ReadLine());
