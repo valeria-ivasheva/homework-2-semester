@@ -7,7 +7,7 @@ namespace HashTable3
     /// </summary>
     public class HashTable
     {
-        const int HashTableSize = 100;
+        private const int HashTableSize = 100;
         private List[] buckets;
 
         private IHashFunction hashFunction;
@@ -20,7 +20,6 @@ namespace HashTable3
         {
             this.hashFunction = hashFunction;
             buckets = new List[HashTableSize];
-
             for (var i = 0; i < HashTableSize; ++i)
             {
                 buckets[i] = new List();
@@ -42,7 +41,6 @@ namespace HashTable3
         {
             this.hashFunction = new StandartHashFunction();
             buckets = new List[HashTableSize];
-
             for (var i = 0; i < HashTableSize; ++i)
             {
                 buckets[i] = new List();
@@ -55,13 +53,7 @@ namespace HashTable3
         /// <param name="value">Элемент для добавления в таблицу</param>
         public void InsertElement(string value)
         {
-            int number = hashFunction.GetHash(value) % HashTableSize;
-            if (buckets[number] == null)
-            {
-                var temp = new List(value);
-                buckets[number] = temp;
-                return;
-            }
+            int number = Math.Abs(hashFunction.GetHash(value)) % HashTableSize;
             buckets[number].Insert(value);
         }
 
@@ -71,7 +63,7 @@ namespace HashTable3
         /// <param name="value">Удаляемый элемент</param>
         public void DeleteElement(string value)
         {
-            int number = hashFunction.GetHash(value) % HashTableSize;
+            int number = Math.Abs(hashFunction.GetHash(value)) % HashTableSize;
             if (buckets[number] == null)
             {
                 return;
@@ -86,7 +78,7 @@ namespace HashTable3
         /// <returns>Возвращает true, если есть в этот таблице </returns>
         public bool HasElement(string value)
         {
-            int number = hashFunction.GetHash(value) % HashTableSize;
+            int number = Math.Abs(hashFunction.GetHash(value)) % HashTableSize;
             if (buckets[number] == null)
             {
                 return false;

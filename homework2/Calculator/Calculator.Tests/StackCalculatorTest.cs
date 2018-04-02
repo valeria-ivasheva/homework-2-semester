@@ -6,7 +6,7 @@ namespace Calculator.Tests
     public class StackCalculatorTest
     {
         private StackCalculator calculator;
-        const double delta = 0.0001;
+        private const double delta = 0.0001;
 
         [TestMethod]
         public void Sum_2Plus5_7Returned()
