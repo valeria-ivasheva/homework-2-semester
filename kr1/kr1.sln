@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kr1", "kr1\kr1.csproj", "{889D2B13-F940-4305-AA57-A20F1EBF694E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTest", "QueueTest\QueueTest.csproj", "{5A78EEE0-0F83-490F-AB8E-D0A244C86504}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{889D2B13-F940-4305-AA57-A20F1EBF694E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{889D2B13-F940-4305-AA57-A20F1EBF694E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{889D2B13-F940-4305-AA57-A20F1EBF694E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{889D2B13-F940-4305-AA57-A20F1EBF694E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A78EEE0-0F83-490F-AB8E-D0A244C86504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A78EEE0-0F83-490F-AB8E-D0A244C86504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A78EEE0-0F83-490F-AB8E-D0A244C86504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A78EEE0-0F83-490F-AB8E-D0A244C86504}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9E70C76-66CA-4852-9869-C79A713F27D1}
+	EndGlobalSection
+EndGlobal
