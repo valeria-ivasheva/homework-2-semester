@@ -2,6 +2,9 @@
 
 namespace Hm41
 {
+    /// <summary>
+    /// Класс, описывающий оператора
+    /// </summary>
     class Operation : ElementOfTree
     {
         private string arithmeticOperator;

@@ -3,7 +3,7 @@
 namespace Hm41
 {
     /// <summary>
-    /// Класс, описывающий оператора
+    /// Класс, описывающий операнда
     /// </summary>
     class Operand : ElementOfTree
     {
