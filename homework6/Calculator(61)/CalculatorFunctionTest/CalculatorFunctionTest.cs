@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Calculator_61_;
+using Calculator;
 
 namespace CalculatorFunctionTest
 {
@@ -12,7 +12,7 @@ namespace CalculatorFunctionTest
         [TestMethod]
         public void CalculateSum()
         {
-            Double.TryParse(calculator.Calculate("2", "23", "+"),out double result);
+            Double.TryParse(calculator.Calculate("2", "23", "+"), out double result);
             Assert.AreEqual(result, 25, 0.00001);
         }
 
@@ -69,7 +69,7 @@ namespace CalculatorFunctionTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(Calculator_61_.DivideByZeroException))]
+        [ExpectedException(typeof(Calculator.DivideByZeroException))]
         public void DivideByZeroException()
         {
             calculator.Calculate("90", "0", "/");

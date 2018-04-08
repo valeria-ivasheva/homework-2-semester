@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculator_61_
+namespace Calculator
 {
     /// <summary>
     /// Класс-исключение: Неправильно введенны данные

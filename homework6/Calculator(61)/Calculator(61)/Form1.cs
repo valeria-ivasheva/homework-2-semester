@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Calculator_61_
+namespace Calculator
 {
     public partial class Calculator : Form
     {
         private string inputValue = "";
         private string tempValue = "";
         private string operation = "";
+        private int state = 0;
+        /// <summary>
+        /// state = 0 Ввод
+        /// state = 1 Ошибка
+        /// state = 2 Есть результат
+        /// </summary>
 
         private CalculatorFunction calculator = new CalculatorFunction();
 
@@ -16,28 +22,23 @@ namespace Calculator_61_
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private bool IsOperation(object sender)
         {
-        }
-        
-        private void Calculator_Load(object sender, EventArgs e)
-        {
-
+            return ((sender as Button).Text == "-" || (sender as Button).Text == "+" || (sender as Button).Text =="/" || (sender as Button).Text == "*");
         }
 
         /// <summary>
         /// Записывает введенный символ
         /// </summary>
-        /// <param name="inputStr"> Введенный символ</param>
-        private void Input(string inputStr)
+        private void ButtonClick(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Input Error" || textBox1.Text == "Divide by zero :(")
+            if (state == 1 || (!(IsOperation(sender)) && state == 2))
             {
                 Reset();
             }
-            textBox1.Text = textBox1.Text + inputStr;
+            textBox1.Text = textBox1.Text + (sender as Button).Text;
         }
-
+        
         /// <summary>
         /// Записывает оператор и считает промежуточное значение, если нужно
         /// </summary>
@@ -58,61 +59,13 @@ namespace Calculator_61_
                 }
                 operation = strOperator;
                 textBox1.Text = "";
+                state = 0;
             }
-            catch (Exception e)
+            catch (Exception error) when (error is InputErrorException || error is DivideByZeroException)
             {
-                textBox1.Text = e.Message;
+                textBox1.Text = error.Message;
+                state = 1;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Input("1");
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Input("2");
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Input("3");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Input("4");
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Input("5");
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Input("6");
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Input("7");
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Input("8");
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-           Input("9");
-        }
-
-        private void button0_Click(object sender, EventArgs e)
-        {
-            Input("0");
         }
 
         private void buttonCalculate_Click(object sender, EventArgs e)
@@ -123,10 +76,12 @@ namespace Calculator_61_
                 string str = calculator.Calculate(inputValue, tempValue, operation);
                 textBox1.Text = str;
                 operation = "";
+                state = 2;
             }
-            catch (Exception error)
+            catch (Exception error) when (error is InputErrorException || error is DivideByZeroException)
             {
                 textBox1.Text = error.Message;
+                state = 1;
             }
         }
 
@@ -148,11 +103,6 @@ namespace Calculator_61_
         private void buttonDivision_Click(object sender, EventArgs e)
         {
             Operation("/");
-        }
-
-        private void buttonDot_Click(object sender, EventArgs e)
-        {
-            Input(",");
         }
 
         private void buttonClearError_Click(object sender, EventArgs e)
@@ -177,6 +127,7 @@ namespace Calculator_61_
             inputValue = "";
             tempValue = "";
             operation = "";
+            state = 0;
         }
     }
 }

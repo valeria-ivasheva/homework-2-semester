@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Calculator_61_
+namespace Calculator
 {
     /// <summary>
     /// Класс, отвечающий за логику программы
@@ -49,8 +49,11 @@ namespace Calculator_61_
                         }
                         return (valueLeft / valueRight).ToString();
                     }
+                default:
+                    {
+                        throw new InputErrorException();
+                    }
             }
-            throw new InputErrorException();
         }
     }
 }

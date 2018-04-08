@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Calculator_61_
+namespace Calculator
 {
     static class Program
     {
