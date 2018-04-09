@@ -42,11 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Division.cs" />
     <Compile Include="ElementOfTree.cs" />
     <Compile Include="InputErrorException.cs" />
+    <Compile Include="MinusOperatoin.cs" />
+    <Compile Include="Multiplication.cs" />
     <Compile Include="Operand.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="ParseTree.cs" />
+    <Compile Include="Addition.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

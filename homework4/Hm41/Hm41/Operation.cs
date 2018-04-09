@@ -7,14 +7,8 @@ namespace Hm41
     /// </summary>
     class Operation : ElementOfTree
     {
-        private string arithmeticOperator;
-        private int leftNode;
-        private int rightNode;
-
-        public Operation(string str)
-        {
-            arithmeticOperator = str;
-        }
+        protected int leftNode;
+        protected int rightNode;
 
         /// <summary>
         /// Присваивает операнды для данного оператора
@@ -28,46 +22,17 @@ namespace Hm41
         }
 
         /// <summary>
-        /// Посчитать значение
-        /// </summary>
-        /// <exception cref="DivideByZeroException"> При делении на ноль</exception>
-        /// <exception cref="InputErrorException"> При некорректном вводе</exception>
-        /// <returns> Посчитанное значение</returns>
-        public override int Calculate()
-        {
-            switch (arithmeticOperator)
-            {
-                case "+":
-                    {
-                        return leftNode + rightNode;
-                    }
-                case "-":
-                    {
-                        return leftNode - rightNode;
-                    }
-                case "*":
-                    {
-                        return leftNode * rightNode;
-                    }
-                case "/":
-                    {
-                        if (rightNode == 0)
-                        {
-                            throw new DivideByZeroException("Division by zero");
-                        }
-                        return leftNode / rightNode;
-                    }
-                default:
-                    throw new InputErrorException("It isn't operator");
-            }
-        }
-
-        /// <summary>
-        /// Распечатать элемент
+        /// Напечатать 
         /// </summary>
         public override void Print()
         {
-            Console.Write(arithmeticOperator, " ");
+        }
+        /// <summary>
+        /// Считается в наследниках
+        /// </summary>
+        public override int Calculate()
+        {
+            throw new InputErrorException();
         }
     }
 }

@@ -6,7 +6,6 @@ namespace Hm41
     {
         static void Main(string[] args)
         {
-            
         }
     }
 }
