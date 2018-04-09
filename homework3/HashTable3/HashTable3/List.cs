@@ -1,15 +1,12 @@
 ﻿using System;
 
-namespace Hm42
+namespace HashTable3
 {
     /// <summary>
     /// Класс список
     /// </summary>
     public class List
     {
-        /// <summary>
-        /// Класс элемент списка
-        /// </summary>
         private class ListElement
         {
             public string value;
@@ -51,7 +48,7 @@ namespace Hm42
         /// Вставка элемента в список
         /// </summary>
         /// <param name="value">Вставляемый элемент</param>
-        public virtual void Insert(string value)
+        public void Insert(string value)
         {
             var newElement = new ListElement(value);
             if (IsEmpty())
@@ -75,7 +72,7 @@ namespace Hm42
         {
             if (index > size || index < 0)
             {
-                throw new NonexistentException();
+                return "Error";
             }
             var temp = head;
             for (int i = 1; i < index; i++)
@@ -128,7 +125,7 @@ namespace Hm42
         /// </summary>
         /// <param name="value">Вставляемый элемент</param>
         /// <param name="index">Место, куда нужно вставить</param>
-        public virtual void InsertIndex(string value, int index)
+        public void InsertIndex(string value, int index)
         {
             if (index > size + 1)
             {
@@ -200,7 +197,7 @@ namespace Hm42
         /// Удалить элемент по значению
         /// </summary>
         /// <param name="value">Значение, по которому нужно удалить элемент</param>
-        public virtual void DeleteElement(string value)
+        public void DeleteElement(string value)
         {
             var temp = head;
             if (temp == null)
