@@ -12,10 +12,11 @@ namespace hm52
         public event EventHandler<EventArgs> DownHandler = (sender, args) => { };
         public event EventHandler<EventArgs> UpHandler = (sender, args) => { };
 
-
+        /// <summary>
+        /// Игра начинается
+        /// </summary>
         public void Run()
         {
-            Console.SetCursorPosition(1, 1);
             bool end = false;
             while(!end)
             {

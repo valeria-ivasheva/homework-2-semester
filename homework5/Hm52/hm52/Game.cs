@@ -8,9 +8,9 @@ namespace hm52
     /// </summary>
     public class Game
     {
-        protected static int origRow;
-        protected List<string> field;
-        protected static int origCol;
+        private int origRow;
+        private List<string> field;
+        private int origCol;
 
         public Game(List<string> inputField)
         {

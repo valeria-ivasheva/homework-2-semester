@@ -16,16 +16,16 @@ namespace hm52
             {
                 return;
             }
-            FileStream file = new FileStream("file.txt", FileMode.Open);
-            List <string> field = new List<string>(); 
-            StreamReader reader = new StreamReader(file);
-            while (!reader.EndOfStream)
+            var field = new List<string>();
+            using (StreamReader sr = File.OpenText(nameFile))
             {
-                string str = reader.ReadLine();
-                field.Add(str);
-                Console.WriteLine(str);
+                string temp;
+                while ((temp = sr.ReadLine()) != null)
+                {
+                    field.Add(temp);
+                    Console.WriteLine(temp);
+                }
             }
-            reader.Close();
 
             var eventLoop = new EventLoop();
             var game = new Game(field);
@@ -34,7 +34,7 @@ namespace hm52
             eventLoop.RightHandler += game.OnRight;
             eventLoop.UpHandler += game.OnUp;
             eventLoop.DownHandler += game.OnDown;
-
+            Console.SetCursorPosition(1, 1);
             eventLoop.Run();
         }
     }
