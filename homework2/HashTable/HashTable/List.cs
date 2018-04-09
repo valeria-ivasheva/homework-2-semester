@@ -1,18 +1,13 @@
 ﻿using System;
 
-namespace Hm42
+namespace ListSpace
 {
-    /// <summary>
-    /// Класс список
-    /// </summary>
-    public class List
+    class List
     {
-        /// <summary>
-        /// Класс элемент списка
-        /// </summary>
         private class ListElement
         {
             public string value;
+            public int index;
             public ListElement next;
 
             public ListElement(string value)
@@ -25,69 +20,34 @@ namespace Hm42
         private ListElement tail;
         private int size;
 
-        public List()
-        {
-        }
-
-        /// <summary>
-        /// Инициализация списка с элементом value
-        /// </summary>
-        /// <param name="value">Первый элемент списка</param>
         public List(string value)
         {
             var element = new ListElement(value);
+            element.index = 1;
             head = element;
             tail = head;
             size++;
         }
 
-        /// <summary>
-        /// Проверка на пустоту списка
-        /// </summary>
-        /// <returns>Возвращает true, если список пуст </returns>
         public bool IsEmpty() => size == 0;
 
-        /// <summary>
-        /// Вставка элемента в список
-        /// </summary>
-        /// <param name="value">Вставляемый элемент</param>
-        public virtual void Insert(string value)
+        public void Insert(string value)
         {
             var newElement = new ListElement(value);
             if (IsEmpty())
             {
                 head = newElement;
+                newElement.index = 1;
                 tail = head;
                 size++;
                 return;
             }
+            newElement.index = tail.index + 1;
             tail.next = newElement;
             tail = newElement;
             size++;
         }
 
-        /// <summary>
-        /// Возвращает значения элемента по индексу
-        /// </summary>
-        /// <param name="index"> Индекс элемента</param>
-        /// <returns> Значение под этим индексом</returns>
-        public string ElementWithIndex(int index)
-        {
-            if (index > size || index < 0)
-            {
-                throw new NonexistentException();
-            }
-            var temp = head;
-            for (int i = 1; i < index; i++)
-            {
-                temp = temp.next;
-            }
-            return temp.value;
-        }
-
-        /// <summary>
-        /// Печать всех элементов списка
-        /// </summary>
         public void PrintList()
         {
             var temp = head;
@@ -104,11 +64,6 @@ namespace Hm42
             }
         }
 
-        /// <summary>
-        /// Проверка на существование элемента в списке
-        /// </summary>
-        /// <param name="value">Проверяемый элемент</param>
-        /// <returns>Возвращает true, если есть такой элемент</returns>
         public bool HasElement(string value)
         {
             var temp = head;
@@ -123,12 +78,7 @@ namespace Hm42
             return false;
         }
 
-        /// <summary>
-        /// Вставка элемента с индексом
-        /// </summary>
-        /// <param name="value">Вставляемый элемент</param>
-        /// <param name="index">Место, куда нужно вставить</param>
-        public virtual void InsertIndex(string value, int index)
+        public void InsertIndex(string value, int index)
         {
             if (index > size + 1)
             {
@@ -137,6 +87,7 @@ namespace Hm42
             }
             var temp = head;
             var newElement = new ListElement(value);
+            newElement.index = index;
             size++;
             if (index == 1)
             {
@@ -148,6 +99,7 @@ namespace Hm42
                 }
                 newElement.next = head;
                 head = newElement;
+                FixIndex(head.next, index + 1);
                 return;
             }
             for (int i = 1; i < index - 1; i++)
@@ -162,23 +114,27 @@ namespace Hm42
             }
             newElement.next = temp.next;
             temp.next = newElement;
+            FixIndex(newElement.next, index + 1);
+
         }
 
-        /// <summary>
-        /// Удалить элемент под индексом
-        /// </summary>
-        /// <param name="index">Индекс удаляемого элемента</param>
+        private void FixIndex(ListElement element, int index)
+        {
+            for (int i = index; i <= size; i++)
+            {
+                element.index = i;
+                element = element.next;
+            }
+        }
+
         public void DeleteElementIndex(int index)
         {
             var temp = head;
-            if (temp == null)
-            {
-                return;
-            }
             size--;
             if (index == 1)
             {
                 head = temp.next;
+                FixIndex(head, temp.index);
                 if (temp == tail)
                 {
                     tail = head;
@@ -194,19 +150,12 @@ namespace Hm42
                 tail = temp;
             }
             temp.next = temp.next.next;
+            FixIndex(temp.next, index);
         }
 
-        /// <summary>
-        /// Удалить элемент по значению
-        /// </summary>
-        /// <param name="value">Значение, по которому нужно удалить элемент</param>
-        public virtual void DeleteElement(string value)
+        public void DeleteElement(string value)
         {
             var temp = head;
-            if (temp == null)
-            {
-                return;
-            }
             if (temp.value == value)
             {
                 head = head.next;
@@ -217,6 +166,7 @@ namespace Hm42
                     size--;
                     return;
                 }
+                FixIndex(head, temp.index);
                 return;
             }
             if (!HasElement(value))
@@ -233,6 +183,7 @@ namespace Hm42
                 tail = temp;
             }
             size--;
+            FixIndex(temp.next.next, temp.next.index);
             temp.next = temp.next.next;
         }
     }
