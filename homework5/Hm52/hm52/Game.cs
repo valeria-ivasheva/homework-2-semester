@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace hm52
 {
@@ -12,9 +13,24 @@ namespace hm52
         private List<string> field;
         private int origCol;
 
-        public Game(List<string> inputField)
+        public Game(string nameFile)
         {
-            field = inputField;
+            field = InputField(nameFile);
+        }
+
+        public List<string> InputField(string nameFile)
+        {
+            var field = new List<string>();
+            using (StreamReader sr = File.OpenText(nameFile))
+            {
+                string temp;
+                while ((temp = sr.ReadLine()) != null)
+                {
+                    field.Add(temp);
+                    Console.WriteLine(temp);
+                }
+            }
+            return field;
         }
 
         /// <summary>
@@ -52,6 +68,12 @@ namespace hm52
             Console.SetCursorPosition(--origCol, origRow);
         }
 
+        public List<int> Cursor()
+        {
+            var result = new List<int> { Console.CursorLeft, Console.CursorTop };
+            return result;
+        }
+
         /// <summary>
         /// Переводит элемент на одну позицию вправо, если это возможно
         /// </summary>
@@ -66,6 +88,7 @@ namespace hm52
             }
             Console.SetCursorPosition(origCol, origRow);
             Console.Write(' ');
+            Console.SetCursorPosition(origCol + 1, origRow);
         }
 
         /// <summary>
@@ -84,6 +107,7 @@ namespace hm52
             Console.Write(' ');
             Console.SetCursorPosition(origCol, origRow + 1);
         }
+
 
         /// <summary>
         /// Переводит элемент на одну позицию вверх, если это возможно

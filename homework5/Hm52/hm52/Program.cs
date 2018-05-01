@@ -16,19 +16,9 @@ namespace hm52
             {
                 return;
             }
-            var field = new List<string>();
-            using (StreamReader sr = File.OpenText(nameFile))
-            {
-                string temp;
-                while ((temp = sr.ReadLine()) != null)
-                {
-                    field.Add(temp);
-                    Console.WriteLine(temp);
-                }
-            }
-
+            
             var eventLoop = new EventLoop();
-            var game = new Game(field);
+            var game = new Game(nameFile);
 
             eventLoop.LeftHandler += game.OnLeft;
             eventLoop.RightHandler += game.OnRight;
