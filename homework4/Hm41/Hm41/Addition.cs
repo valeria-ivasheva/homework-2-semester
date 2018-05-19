@@ -3,7 +3,7 @@
 namespace Hm41
 {
     /// <summary>
-    /// Класс, реализовывающий сложение
+    /// Класс, реализующий сложение
     /// </summary>
     class Addition : Operation
     {
@@ -13,7 +13,7 @@ namespace Hm41
         /// <returns> Сумма двух чисел</returns>
         public override int Calculate()
         {
-            return leftNode+rightNode;
+            return LeftNode + RightNode;
         }
 
         /// <summary>

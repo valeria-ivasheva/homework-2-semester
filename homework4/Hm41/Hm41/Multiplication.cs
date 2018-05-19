@@ -13,7 +13,7 @@ namespace Hm41
         /// <returns> Результат умножения</returns>
         public override int Calculate()
         {
-            return rightNode * leftNode;
+            return RightNode * LeftNode;
         }
 
         /// <summary>

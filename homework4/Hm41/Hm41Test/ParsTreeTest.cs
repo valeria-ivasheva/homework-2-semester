@@ -11,7 +11,7 @@ namespace Hm41Test
         public void ElementaryExpression()
         {
             var tree = new ParseTree("(+ 23 9 )");
-            int result = tree.ResultArithmetic();
+            int result = tree.ResultArithmetic;
             Assert.AreEqual(32, result);
         }
 
@@ -19,7 +19,7 @@ namespace Hm41Test
         public void ElementaryWithLeftExpression()
         {
             var tree = new ParseTree("(- (+ 23 9 ) 2 )");
-            int result = tree.ResultArithmetic();
+            int result = tree.ResultArithmetic;
             Assert.AreEqual(30, result);
         }
 
@@ -27,7 +27,7 @@ namespace Hm41Test
         public void ElementaryWithRightExpression()
         {
             var tree = new ParseTree("(- 2 (+ 23 9 ) )");
-            int result = tree.ResultArithmetic();
+            int result = tree.ResultArithmetic;
             Assert.AreEqual(-30, result);
         }
 
@@ -35,7 +35,7 @@ namespace Hm41Test
         public void DoubleExpression()
         {
             var tree = new ParseTree("(- (+ 23 9 ) (- 3 1 ) )");
-            int result = tree.ResultArithmetic();
+            int result = tree.ResultArithmetic;
             Assert.AreEqual(30, result);
         }
 
@@ -66,7 +66,7 @@ namespace Hm41Test
         public void DivisionByZeroException()
         {
             var tree = new ParseTree("(/ 23 0 )");
-            tree.ResultArithmetic();
+            int result =  tree.ResultArithmetic;
         }
     }
 }

@@ -46,7 +46,6 @@ namespace Hm41
         /// <returns> Дерево разбора</returns>
         private Node BuildTree(ref string str)
         {
-            Node node = new Node();
             if (str[0] != '(')
             {
                 throw new InputErrorException();
@@ -55,12 +54,13 @@ namespace Hm41
             {
                 throw new InputErrorException();
             }
+            Node node = new Node();
             var operation = new Operation();
             switch (str.Substring(1, 1))
             {
                 case "-":
                     {
-                        operation = new Substraction();
+                        operation = new Subtraction();
                         break;
                     }
                 case "+":
@@ -131,10 +131,7 @@ namespace Hm41
         /// <summary>
         /// Печатает дерево
         /// </summary>
-        public void Print()
-        {
-            PrintNode(ref root);
-        }
+        public void Print() => PrintNode(ref root);
 
         /// <summary>
         /// Печатает элемент дерева
@@ -163,9 +160,6 @@ namespace Hm41
         /// Возвращает результат для данного дерева
         /// </summary>
         /// <returns> Результат арифметического выражения для данного дерева</returns>
-        public int ResultArithmetic()
-        {
-            return root.value.Calculate();
-        }
+        public int ResultArithmetic => root.value.Calculate();
     }
 }

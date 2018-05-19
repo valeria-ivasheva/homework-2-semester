@@ -7,8 +7,10 @@ namespace Hm41
     /// </summary>
     class Operation : ElementOfTree
     {
-        protected int leftNode;
-        protected int rightNode;
+
+        public int LeftNode
+        { get; private set; }
+        public int RightNode { get; private set; }
 
         /// <summary>
         /// Присваивает операнды для данного оператора
@@ -17,8 +19,8 @@ namespace Hm41
         /// <param name="right"> Правый операнд</param>
         public void InsertNumber(int left, int right)
         {
-            leftNode = left;
-            rightNode = right;
+            LeftNode = left;
+            RightNode = right;
         }
 
         /// <summary>
@@ -27,6 +29,7 @@ namespace Hm41
         public override void Print()
         {
         }
+
         /// <summary>
         /// Считается в наследниках
         /// </summary>

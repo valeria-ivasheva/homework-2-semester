@@ -5,7 +5,7 @@ namespace Hm41
     /// <summary>
     /// Класс, соответствующий операции вычитание
     /// </summary>
-    class Substraction : Operation
+    class Subtraction : Operation
     {
         /// <summary>
         /// Считает разность 
@@ -13,7 +13,7 @@ namespace Hm41
         /// <returns> Результат операции вычитание</returns>
         public override int Calculate()
         {
-            return leftNode - rightNode;
+            return LeftNode - RightNode;
         }
 
         /// <summary>

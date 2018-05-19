@@ -14,11 +14,11 @@ namespace Hm41
         /// <returns> Посчитанное значение</returns>
         public override int Calculate()
         {
-            if (rightNode == 0)
+            if (RightNode == 0)
             {
-                throw new DivideByZeroException("Division by zero");
+                throw new DivideByZeroException();
             }
-            return leftNode / rightNode;
+            return LeftNode / RightNode;
         }
 
         /// <summary>
