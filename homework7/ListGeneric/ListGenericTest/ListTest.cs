@@ -58,7 +58,7 @@ namespace ListGenericTest
             list.CopyTo( arrayTemp, 0);
             for (int i = 1; i <=3; i++)
             {
-                Assert.AreEqual(list[i - 1], i);
+                Assert.AreEqual(arrayTemp[i - 1], i);
             }
         }
 
