@@ -4,5 +4,10 @@ branches:
     only:
       - hm7
 
+before_build:
+  - dotnet --info
+  - dotnet restore homework7/Hm72/Hm72.sln
+  - dotnet add homework7/Hm72/Hm72Tests/SetGenericTest.csproj package Appveyor.TestLogger
+
 build:
  project: homework7/Hm72/Hm72.sln
