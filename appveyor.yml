@@ -1,8 +1,8 @@
 image: Visual Studio 2017
 
 branches:
- only:
-  -hm7
+    only:
+      - hm7
 
 build:
  project: homework7/Hm72/Hm72.sln
