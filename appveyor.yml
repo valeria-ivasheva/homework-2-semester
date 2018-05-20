@@ -1,8 +1,11 @@
 image: Visual Studio 2017
 
+init: 
+ - git conflig --global core.autocrlf input
+
 branches:
     only:
       - hm7
 
 build:
- project: homework7/Hm72/Hm72.sln
+ project: homework7/ListGeneric/ListGeneric.sln
