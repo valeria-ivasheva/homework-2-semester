@@ -11,6 +11,8 @@ namespace ListGeneric
             {
                 list.Add(i);
             }
+            list.Add(34);
+            list.Remove(34);
             var arrayTemp = new int[3];
             list.CopyTo(arrayTemp, 0);
             for (int i = 1; i <= 3; i++)

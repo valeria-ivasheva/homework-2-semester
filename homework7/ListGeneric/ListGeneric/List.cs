@@ -10,7 +10,6 @@ namespace ListGeneric
     /// <typeparam name="T"> Тип, хранящийся в списке</typeparam>
     public class List<T> : IList<T>
     {
-        private int size;
         private ListElement head;
         private ListElement tail;
 
@@ -30,7 +29,7 @@ namespace ListGeneric
         /// <summary>
         /// Количество элементов в списке
         /// </summary>
-        public int Count => size;
+        public int Count { get; private set; }
 
         public bool IsReadOnly => false;
 
@@ -45,17 +44,17 @@ namespace ListGeneric
             {
                 head = newElement;
                 tail = head;
-                size++;
+                Count++;
                 return;
             }
             tail.next = newElement;
             tail = newElement;
-            size++;
+            Count++;
         }
 
         private T GetElement(int index)
         {
-            if (index < 0 || index > size)
+            if (index < 0 || index > Count)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -67,14 +66,14 @@ namespace ListGeneric
             return temp.value;
         }
 
-        private bool IsEmpty() => size == 0;
+        private bool IsEmpty() => Count == 0;
         
         /// <summary>
         /// Почистить список
         /// </summary>
         public void Clear()
         {
-            size = 0;
+            Count = 0;
             head = null;
             tail = null;
         }
@@ -87,7 +86,7 @@ namespace ListGeneric
         public bool Contains(T item)
         {
             var temp = head;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Equals(temp.value, item))
                 {
@@ -105,7 +104,7 @@ namespace ListGeneric
         /// <param name="arrayIndex"> Индекс, с которого начинается копирование</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            for (int i = arrayIndex; arrayIndex+size> i;i++)
+            for (int i = arrayIndex; arrayIndex+Count> i;i++)
             {
                 array[i] = this[i - arrayIndex];
             }
@@ -119,7 +118,7 @@ namespace ListGeneric
         public int IndexOf(T item)
         {
             var temp = head;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (Equals(temp.value, item))
                 {
@@ -137,14 +136,14 @@ namespace ListGeneric
         /// <param name="item"> Элемент</param>
         public void Insert(int index, T item)
         {
-            if (index > size + 1)
+            if (index > Count + 1)
             {
-                Console.WriteLine($"Index should not exceed {size + 1}");
+                Console.WriteLine($"Index should not exceed {Count + 1}");
                 throw new IndexOutOfRangeException();
             }
             var newElement = new ListElement(item);
             var temp = head;
-            size++;
+            Count++;
             if (index == 0)
             {
                 if (head == null)
@@ -161,7 +160,7 @@ namespace ListGeneric
             {
                 temp = temp.next;
             }
-            if (index == size)
+            if (index == Count)
             {
                 tail = newElement;
                 temp.next = newElement;
@@ -186,7 +185,7 @@ namespace ListGeneric
                 {
                     tail = head;
                 }
-                size--;
+                Count--;
                 return true;
             }
             if (!Contains(item))
@@ -203,7 +202,7 @@ namespace ListGeneric
                 tail = temp;
             }
             temp.next = temp.next.next;
-            size--;
+            Count--;
             return true;
         }
 
@@ -213,11 +212,11 @@ namespace ListGeneric
         /// <param name="index"> Индекс, по которому мы хотим удалить</param>
         public void RemoveAt(int index)
         {
-            if (index < 0 || index > size - 1 || size == 0)
+            if (index < 0 || index > Count - 1 || Count == 0)
             {
                 return;
             }
-            size--;
+            Count--;
             var temp = head;
             if (index == 0)
             {
@@ -239,15 +238,18 @@ namespace ListGeneric
             temp.next = temp.next.next;
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return new ListEnum( this);
-        }
+        /// <summary>
+        /// Возвращает перечислитель, выполняющий перебор элементов в коллекции
+        /// </summary>
+        /// <returns> Перечислитель, который можно использовать для итерации по коллекции</returns>
+        public IEnumerator<T> GetEnumerator() => new ListEnum(this);
 
+        /// <summary>
+        /// Перечислитель, который можно использовать для итерации по коллекции
+        /// </summary>
         public class ListEnum : IEnumerator<T>
         {
             private int position;
-            private T current;
             private List<T> list;
 
             public ListEnum(List<T> list)
@@ -256,7 +258,7 @@ namespace ListGeneric
                 position = -1;
             }
 
-            public T Current => current;
+            public T Current { get; private set; }
 
             object IEnumerator.Current => Current;
 
@@ -266,22 +268,26 @@ namespace ListGeneric
 
             bool IEnumerator.MoveNext()
             {
-                if (position + 1 >= list.size)
+                if (position + 1 >= list.Count)
                 {
                     return false;
                 }
                 position++;
-                current = list[position];
+                Current = list[position];
                 return true;
             }
 
             void IEnumerator.Reset()
             {
-                current = default(T);
+                Current = default(T);
                 position = -1;
             }
         }
         
+        /// <summary>
+        /// Возвращает энумератор для контейнера
+        /// </summary>
+        /// <returns> Энумератор</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
