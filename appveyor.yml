@@ -1,11 +1,11 @@
 image: Visual Studio 2017
 
-init:
- - git config --global core.autocrlf input
+branches:
+ only:
+  - hm7
 
-environment:
- matrix:
-  - ListGeneric: homework7/ListGeneric/ListGeneric.sln
-
+before_build:
+  - nuget restore homework7/Hm72/Hm72.sln
+  
 build_script:
-- msbuild ListGeneric
+ - msbuild restore homework7/Hm72/Hm72.sln
