@@ -5,6 +5,12 @@ branches:
  only:
   - kr1
 configuration: Debug
+
+before_build:
+  - dotnet --info
+  - dotnet restore kr1/kr1.sln
+  - dotnet add homework-2-semester\kr1\QueueTest\QueueTest.csproj package Appveyor.TestLogger
+
 build:
   project: kr1/kr1.sln
   verbosity: minimal
