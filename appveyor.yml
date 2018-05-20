@@ -8,3 +8,6 @@ configuration: Debug
 build:
   project: kr1/kr1.sln
   verbosity: minimal
+
+test:
+        assemblies: kr1\QueueTest\bin\QueueTest.dll
