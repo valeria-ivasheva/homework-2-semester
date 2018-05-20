@@ -7,12 +7,7 @@ branches:
 configuration: Debug
 
 before_build:
-  - dotnet --info
-  - dotnet restore kr1/kr1.sln
-
-build:
-  project: kr1/kr1.sln
-  verbosity: minimal
-
-test:
-  assemblies: kr1\QueueTest\bin\Debug\QueueTest.dll
+  - nuget restore kr1/kr1.sln
+  
+build_script:
+ - msbuild restore kr1/kr1.sln
