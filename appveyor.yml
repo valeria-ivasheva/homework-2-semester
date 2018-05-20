@@ -1,11 +1,13 @@
 image: Visual Studio 2017
 
-init: 
- - git conflig --global core.autocrlf input
-
 branches:
     only:
       - hm7
+
+before_build:
+  - dotnet --info
+  - dotnet restore homework7/ListGeneric/ListGeneric.sln
+  - dotnet add homework7/ListGeneric/ListGenericTest/ListGenericTest.csproj package Appveyor.TestLogger
 
 build:
  project: homework7/ListGeneric/ListGeneric.sln
