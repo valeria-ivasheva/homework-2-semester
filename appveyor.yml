@@ -9,11 +9,5 @@ build_script:
 branches:
     only:
       - hm7
-
-before_build:
-  - dotnet --info
-  - dotnet restore homework7/ListGeneric/ListGeneric.sln
-  - dotnet add homework7/ListGeneric/ListGenericTest/ListGenericTest.csproj 
-
 build:
  project: homework7/ListGeneric/ListGeneric.sln
