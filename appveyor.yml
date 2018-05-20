@@ -15,4 +15,4 @@ build:
   verbosity: minimal
 
 test:
-  assemblies: kr1\QueueTest\bin\QueueTest.dll
+  assemblies: kr1\QueueTest\bin\Debug\QueueTest.dll
