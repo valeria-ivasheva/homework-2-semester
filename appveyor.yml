@@ -1,5 +1,11 @@
 image: Visual Studio 2017
 
+init:
+ - git conflig --global core.autocrlf input
+
+build_script:
+- cmd: build.cmd All
+
 version: 1.0.{build}
 branches:
  only:
