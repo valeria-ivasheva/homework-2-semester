@@ -3,11 +3,9 @@ image: Visual Studio 2017
 init:
  - git config --global core.autocrlf input
 
-build_script:
- - cmd: build.cmd All
+environment:
+ matrix:
+  - ListGeneric: homework7/ListGeneric/ListGeneric.sln
 
-branches:
-    only:
-      - hm7
-build:
- project: homework7/ListGeneric/ListGeneric.sln
+build_script:
+- msbuild ListGeneric
