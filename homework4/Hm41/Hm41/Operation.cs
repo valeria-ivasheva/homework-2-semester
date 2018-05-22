@@ -5,11 +5,9 @@ namespace Hm41
     /// <summary>
     /// Класс, описывающий оператора
     /// </summary>
-    class Operation : ElementOfTree
+     class Operation : ElementOfTree
     {
-
-        public int LeftNode
-        { get; private set; }
+        public int LeftNode { get; private set; }
         public int RightNode { get; private set; }
 
         /// <summary>
@@ -30,9 +28,6 @@ namespace Hm41
         {
         }
 
-        /// <summary>
-        /// Считается в наследниках
-        /// </summary>
         public override int Calculate()
         {
             throw new InputErrorException();
