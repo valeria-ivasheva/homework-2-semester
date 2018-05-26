@@ -5,7 +5,7 @@ branches:
   - kr1
 
 before_build:
-  - nuget restore kr1/kr1.sln
+  - nuget restore 
   
 build_script:
- - msbuild restore kr1/kr1.sln
+ - msbuild restore "kr1/kr1.sln"
