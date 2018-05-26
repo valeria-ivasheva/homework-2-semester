@@ -8,4 +8,4 @@ before_build:
   - nuget restore homework7/Hm72/Hm72.sln
 
 build:
- - project: homework7/Hm72/Hm72.sln
+  project: homework7/Hm72/Hm72.sln
