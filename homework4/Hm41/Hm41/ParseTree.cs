@@ -55,34 +55,7 @@ namespace Hm41
                 throw new InputErrorException();
             }
             Node node = new Node();
-            var operation = new Operation();
-            switch (str.Substring(1, 1))
-            {
-                case "-":
-                    {
-                        operation = new Subtraction();
-                        break;
-                    }
-                case "+":
-                    {
-                        operation = new Addition();
-                        break;
-                    }
-                case "*":
-                    {
-                        operation = new Multiplication();
-                        break;
-                    }
-                case "/":
-                    {
-                        operation = new Division();
-                        break;
-                    }
-                default:
-                    {
-                        throw new InputErrorException();
-                    }
-            }
+            var operation = createOperation(str.Substring(1, 1));
             str = str.Substring(3, str.Length - 3);
             for (int j = 0; j < 2; j++)
             {
@@ -161,5 +134,32 @@ namespace Hm41
         /// </summary>
         /// <returns> Результат арифметического выражения для данного дерева</returns>
         public int ResultArithmetic => root.value.Calculate();
+
+        private Operation createOperation(string str)
+        {
+            switch (str)
+            {
+                case "-":
+                    {
+                        return new Subtraction();
+                    }
+                case "+":
+                    {
+                        return new Addition();
+                    }
+                case "*":
+                    {
+                        return new Multiplication();
+                    }
+                case "/":
+                    {
+                        return new Division();
+                    }
+                default:
+                    {
+                        throw new InputErrorException();
+                    }
+            }
+        }
     }
 }
