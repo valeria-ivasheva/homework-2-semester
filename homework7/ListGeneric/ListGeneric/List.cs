@@ -24,7 +24,7 @@ namespace ListGeneric
             }
         }
 
-        public T this[int index] { get => GetElement(index); set => Insert(index, value); }
+        public T this[int index] { get => GetElement(index); set => SetElement(index, value); }
 
         /// <summary>
         /// Количество элементов в списке
@@ -52,6 +52,12 @@ namespace ListGeneric
             Count++;
         }
 
+        private void SetElement(int index, T value)
+        {
+            Insert(index, value);
+            RemoveAt(index + 1);
+        }
+
         private T GetElement(int index)
         {
             if (index < 0 || index > Count)
@@ -67,7 +73,7 @@ namespace ListGeneric
         }
 
         private bool IsEmpty() => Count == 0;
-        
+
         /// <summary>
         /// Почистить список
         /// </summary>
@@ -104,7 +110,7 @@ namespace ListGeneric
         /// <param name="arrayIndex"> Индекс, с которого начинается копирование</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            for (int i = arrayIndex; arrayIndex+Count> i;i++)
+            for (int i = arrayIndex; arrayIndex + Count > i; i++)
             {
                 array[i] = this[i - arrayIndex];
             }
@@ -190,7 +196,7 @@ namespace ListGeneric
             }
             if (!Contains(item))
             {
-                Console.WriteLine("This element does not exist {0}", item);
+                Console.WriteLine($"This element does not exist {item}");
                 return false;
             }
             while (!Equals(temp.next.value, item))
@@ -283,7 +289,7 @@ namespace ListGeneric
                 position = -1;
             }
         }
-        
+
         /// <summary>
         /// Возвращает энумератор для контейнера
         /// </summary>

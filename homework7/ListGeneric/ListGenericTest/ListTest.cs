@@ -55,8 +55,8 @@ namespace ListGenericTest
                 list.Add(i);
             }
             var arrayTemp = new int[3];
-            list.CopyTo( arrayTemp, 0);
-            for (int i = 1; i <=3; i++)
+            list.CopyTo(arrayTemp, 0);
+            for (int i = 1; i <= 3; i++)
             {
                 Assert.AreEqual(arrayTemp[i - 1], i);
             }
@@ -112,7 +112,7 @@ namespace ListGenericTest
             }
             list.RemoveAt(0);
             Assert.IsFalse(list.Contains(1));
-        }  
+        }
 
         [TestMethod]
         public void EnumeratorTest()
@@ -122,11 +122,20 @@ namespace ListGenericTest
                 list.Add(i);
             }
             int j = 1;
-            foreach(var temp in list)
+            foreach (var temp in list)
             {
                 Assert.AreEqual(temp, j);
                 j++;
             }
+        }
+
+        [TestMethod]
+        public void SetTest()
+        {
+            list = new List<int> { 1 };
+            list[0] = 2;
+            Assert.AreEqual(list[0], 2);
+            Assert.AreEqual(list.Count, 1);
         }
     }
 }
