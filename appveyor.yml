@@ -2,10 +2,10 @@ image: Visual Studio 2017
 
 branches:
  only:
-  - hm7
+  - hm7 
 
 before_build:
   - nuget restore homework7/Hm72/Hm72.sln
-  
-build_script:
- - msbuild restore homework7/Hm72/Hm72.sln
+
+build:
+  project: homework7/Hm72/Hm72.sln
