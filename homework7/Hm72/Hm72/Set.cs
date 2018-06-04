@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Hm72
@@ -91,9 +92,9 @@ namespace Hm72
         }
 
         /// <summary>
-        /// Копирует элементы списка в массив, начиная с некоторого индекса
+        /// Копирует элементы множества в массив, начиная с некоторого индекса
         /// </summary>
-        /// <param name="array"> Массив, куда копируется список</param>
+        /// <param name="array"> Массив, куда копируется множество</param>
         /// <param name="arrayIndex"> Индекс, с которого начинается копирование</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
@@ -121,7 +122,7 @@ namespace Hm72
         }
 
         /// <summary>
-        /// Возвращает энумератор, выполняющий перебор элементов в списке
+        /// Возвращает энумератор, выполняющий перебор элементов в множестве 
         /// </summary>
         /// <returns> Энумератор</returns>
         public IEnumerator<T> GetEnumerator() => new SetEnum(this);
@@ -158,23 +159,12 @@ namespace Hm72
             var setTemp = new Set<T>();
             setTemp.UnionWith(this);
             setTemp.IntersectWith(other);
-            int size = 0;
-            foreach (var element in other)
-            {
-                size++;
-            }
+            int size = other.Count();
             if (size == Count)
             {
                 return false;
             }
-            if (Count == setTemp.Count)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Count == setTemp.Count;
         }
 
         /// <summary>
@@ -193,14 +183,7 @@ namespace Hm72
                     return false;
                 }
             }
-            if (size < Count || size == 0 && Count == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (size < Count || size == 0 && Count == 0);
         }
 
         /// <summary>
@@ -356,7 +339,7 @@ namespace Hm72
 
         void ICollection<T>.Add(T item)
         {
-            throw new NotImplementedException();
+            Add(item);
         }
 
         /// <summary>
