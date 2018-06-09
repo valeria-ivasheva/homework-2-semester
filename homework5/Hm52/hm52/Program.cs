@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace hm52
+namespace Hm52
 {
     /// <summary>
     /// Игра, в которой штучка ходит по лабиринту

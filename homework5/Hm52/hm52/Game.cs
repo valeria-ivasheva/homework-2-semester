@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace hm52
+namespace Hm52
 {
     /// <summary>
     /// Класс, реализующий игру
@@ -18,6 +18,11 @@ namespace hm52
             field = InputField(nameFile);
         }
 
+        /// <summary>
+        /// Загружает поле из файла
+        /// </summary>
+        /// <param name="nameFile"> Имя файла с полем</param>
+        /// <returns> Поле игры</returns>
         public List<string> InputField(string nameFile)
         {
             var field = new List<string>();
@@ -64,10 +69,14 @@ namespace hm52
                 Console.SetCursorPosition(origCol, origRow);
                 return;
             }
-            Console.Write(' ');
+            WriteSpace();
             Console.SetCursorPosition(--origCol, origRow);
         }
 
+        /// <summary>
+        /// Возвращает координаты курсора
+        /// </summary>
+        /// <returns> Координаты курсора</returns>
         public List<int> Cursor()
         {
             var result = new List<int> { Console.CursorLeft, Console.CursorTop };
@@ -86,8 +95,7 @@ namespace hm52
                 Console.SetCursorPosition(origCol, origRow);
                 return;
             }
-            Console.SetCursorPosition(origCol, origRow);
-            Console.Write(' ');
+            WriteSpace();
             Console.SetCursorPosition(origCol + 1, origRow);
         }
 
@@ -103,8 +111,7 @@ namespace hm52
                 Console.SetCursorPosition(origCol, origRow);
                 return;
             }
-            Console.SetCursorPosition(origCol, origRow);
-            Console.Write(' ');
+            WriteSpace();
             Console.SetCursorPosition(origCol, origRow + 1);
         }
 
@@ -121,9 +128,15 @@ namespace hm52
                 Console.SetCursorPosition(origCol, origRow);
                 return;
             }
+            WriteSpace();
+            Console.SetCursorPosition(origCol, origRow - 1);
+        }
+
+        private void WriteSpace()
+        {
+
             Console.SetCursorPosition(origCol, origRow);
             Console.Write(' ');
-            Console.SetCursorPosition(origCol, origRow - 1);
         }
     }
 }

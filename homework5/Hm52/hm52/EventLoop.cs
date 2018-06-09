@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace hm52
+namespace Hm52
 {
     /// <summary>
     /// Класса, генерирующий события по нажатию на клавиши управления курсором
@@ -18,7 +18,7 @@ namespace hm52
         public void Run()
         {
             bool end = false;
-            while(!end)
+            while (!end)
             {
                 var key = Console.ReadKey(true);
                 switch (key.Key)

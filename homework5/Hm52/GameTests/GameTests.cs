@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using hm52;
+using Hm52;
 using System;
 using System.Collections.Generic;
 
-namespace hm52.Tests
+namespace Hm52.Tests
 {
     [TestClass]
     public class GameTests
@@ -21,7 +21,7 @@ namespace hm52.Tests
             "#    # #", "###### #", "#      #", "########"};
 
         [TestMethod()]
-        public void CorrectMap()
+        public void MapShallLoadProperlyTest()
         {
             string temp = @"file.txt";
             var inputMap = game.InputField(temp);

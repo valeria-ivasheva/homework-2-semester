@@ -68,6 +68,9 @@
       <Name>hm52</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="file.txt" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
