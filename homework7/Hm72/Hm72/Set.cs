@@ -173,10 +173,9 @@ namespace Hm72
         /// <returns></returns>
         public bool IsProperSupersetOf(IEnumerable<T> other)
         {
-            int size = 0;
+            int size = other.Count();
             foreach (var element in other)
             {
-                size++;
                 if (!Contains(element))
                 {
                     return false;
@@ -199,19 +198,8 @@ namespace Hm72
             var setTemp = new Set<T>();
             setTemp.UnionWith(this);
             setTemp.IntersectWith(other);
-            int size = 0;
-            foreach (var element in other)
-            {
-                size++;
-            }
-            if (Count == setTemp.Count)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            int size = other.Count();
+            return Count == setTemp.Count;
         }
 
         /// <summary>
@@ -230,14 +218,7 @@ namespace Hm72
                     return false;
                 }
             }
-            if (setTemp.Count <= Count)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (setTemp.Count <= Count);
         }
 
         /// <summary>
@@ -249,14 +230,7 @@ namespace Hm72
         {
             var setNew = this;
             setNew.IntersectWith(other);
-            if (setNew.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return (setNew.Count != 0);
         }
 
         /// <summary>
@@ -353,7 +327,7 @@ namespace Hm72
         /// <summary>
         /// Реализует итератор множества
         /// </summary>
-        public class SetEnum : IEnumerator<T>
+        private class SetEnum : IEnumerator<T>
         {
             private int position;
             private Set<T> set;
