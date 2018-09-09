@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hm51", "Hm51\Hm51.csproj", "{8D76120E-F324-4CD6-9500-DA6E66106B12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hm51Test", "Hm51Test\Hm51Test.csproj", "{337C0984-3FD0-4776-A692-3581C4A57656}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D76120E-F324-4CD6-9500-DA6E66106B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D76120E-F324-4CD6-9500-DA6E66106B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D76120E-F324-4CD6-9500-DA6E66106B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D76120E-F324-4CD6-9500-DA6E66106B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337C0984-3FD0-4776-A692-3581C4A57656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337C0984-3FD0-4776-A692-3581C4A57656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337C0984-3FD0-4776-A692-3581C4A57656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337C0984-3FD0-4776-A692-3581C4A57656}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E28269F-8CED-465A-AE2D-8F446FB2303C}
+	EndGlobalSection
+EndGlobal
