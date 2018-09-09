@@ -1,11 +1,12 @@
 ﻿using System;
 
-namespace Hm42
+namespace Hm41
 {
     class Program
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
